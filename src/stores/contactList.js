@@ -17,6 +17,13 @@ export const useContactStore = defineStore("contact", () => {
     },
   ]);
   const addContact = (contact) => contacts.push(contact);
+  const side = ref(true);
+  const close = () => {
+    side.value = false;
+  };
+  const open = () => {
+    side.value = true;
+  };
 
-  return { contacts, addContact };
+  return { contacts, addContact, side, open, close };
 });

@@ -1,11 +1,15 @@
-<script setup></script>
+<script setup>
+import { useContactStore } from "../stores/contactList";
+const store = useContactStore();
+</script>
 <template>
-  <div class="h-screen w-[60px] bg-blue-800 flex flex-col items-center">
-    <!-- home icon -->
-    <div class="h-[50px] flex justify-center items-center">
-      <a href="#">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-      </a>
+  <div
+    class="h-screen w-[60px] bg-blue-800 flex flex-col items-center"
+    v-if="store.side"
+  >
+    <!-- close sidebar -->
+    <div class="h-[50px] flex justify-center items-center cursor-pointer" @click="store.close">
+      <i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <!-- other icons -->
     <div class="h-[calc(100vh-50px)] flex flex-col justify-around">
