@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from "vue-router";
 import { useContactStore } from "../stores/contactList";
 const store = useContactStore();
 </script>
@@ -8,36 +9,50 @@ const store = useContactStore();
     v-if="store.side"
   >
     <!-- close sidebar -->
-    <div class="h-[50px] flex justify-center items-center cursor-pointer" @click="store.close">
+    <div
+      class="h-[50px] flex justify-center items-center cursor-pointer"
+      @click="store.close"
+    >
       <i class="fa fa-times" aria-hidden="true"></i>
     </div>
     <!-- other icons -->
-    <div class="h-[calc(100vh-50px)] flex flex-col justify-around">
+    <div
+      class="h-[calc(100vh-50px)] flex flex-col justify-around nav-container"
+    >
       <div>
-        <a href="#" class="nav-items">
+        <RouterLink to="/">
           <i class="fa fa-home" aria-hidden="true"></i>
-        </a>
+        </RouterLink>
       </div>
       <div>
-        <a href="#" class="nav-items icon-3">
+        <RouterLink to="/contacts">
           <i class="fa fa-address-book" aria-hidden="true"></i>
-        </a>
+        </RouterLink>
       </div>
       <div>
-        <a href="#" class="nav-items">
+        <RouterLink to="/messages">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
-        </a>
+        </RouterLink>
       </div>
       <div>
-        <a href="#" class="nav-items">
+        <RouterLink to="/settings">
           <i class="fa fa-cogs" aria-hidden="true"></i>
-        </a>
+        </RouterLink>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.nav-container a {
+  padding: 14px;
+}
+
+.nav-container a:hover,
+a.router-link-active {
+  color: white;
+  border-left: 4px solid white;
+}
 div i {
   color: white;
   font-size: 25px;
