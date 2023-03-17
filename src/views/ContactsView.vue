@@ -1,17 +1,20 @@
 <script setup>
+import ContactLists from "../components/ContactList.vue";
 import { useContactStore } from "../stores/contactList";
 const store = useContactStore();
+
+
 </script>
 <template>
-  <header class="flex h-[60px]">
+  <header class="flex h-[80px] w-full items-center">
     <!-- image -->
 
-    <img src="../assets/images/contact.png" alt="" />
+    <img src="../assets/images/contact.png" alt="" class="h-full" />
     <!-- contact name -->
-    <div>
-      <h3>Contacts</h3>
+    <div class="flex flex-col h-full  ">
+      <h3 class="text-start mb-2 uppercase font-bold">Contacts</h3>
       <!-- title -->
-      <div>
+      <div class="">
         <h4>Welcome To Lorem Phonebook</h4>
       </div>
     </div>
@@ -19,30 +22,33 @@ const store = useContactStore();
   <!-- search bar + 2 buttons -->
   <div class="w-full sm:flex items-center">
     <!-- search bar -->
-    <div class="my-5  ">
+    <div class="my-5">
       <input type="text" class="w-full sm:w-[600px] mr-2" />
     </div>
     <!-- buttons -->
     <div
-      
       class="grid gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
     >
       <!-- add -->
-      <button class="h-full px-1 flex items-center ">
+      <button class="h-full px-1 flex items-center">
         <div class="flex w-full justify-around items-center">
-            <i class="fa  fa-plus" aria-hidden="true"> </i>
-        <span>ADD CONTACT</span>
+          <i class="fa fa-plus" aria-hidden="true"> </i>
+          <span>ADD CONTACT</span>
         </div>
       </button>
       <!-- delete all -->
 
-      <button class="h-full px-1 flex items-center ">
+      <button class="h-full px-1 flex items-center">
         <div class="flex w-full justify-around items-center">
-            <i class="fa fa-trash " aria-hidden="true"></i>
-        <span>DELETE ALL</span>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <span>DELETE ALL</span>
         </div>
       </button>
     </div>
+  </div>
+  <!-- contact list -->
+  <div class="w-full ">
+    <ContactLists/>
   </div>
 </template>
 
@@ -59,17 +65,16 @@ button {
   );
   border-radius: 10px;
   box-shadow: -1px 21px 34px -14px rgba(0, 0, 255, 0.63);
-  
+
   width: 140px;
   font-size: 15px;
-   color: white !important;
+  color: white !important;
   font-weight: bold;
-
 }
-input{
-     height: 50px;
+input {
+  height: 50px;
   border-radius: 10px;
-    outline: none;
+  outline: none;
   border: 1px solid #eeecec;
   background-color: #eeecec;
   padding: 0 10px;
