@@ -3,12 +3,12 @@ import { useContactStore } from "../stores/contactList";
 const store = useContactStore();
 const showData = (i) => {
   store.contactIndex(i);
-  console.log(store.contactResult[0]);
+  
 };
 </script>
 <template>
     
-  <table class="text-xs table-auto w-full sm:text-lg sm:w-[600px] mt-3">
+  <table class="text-xs table-auto w-full sm:text-lg  mt-3">
     <thead class="text-left uppercase">
       <tr>
         <!-- checkbox -->
@@ -39,4 +39,8 @@ const showData = (i) => {
   </table>
 </template>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+thead {
+  background-color: #eeecec;
+  border-radius: 10px;
+}</style>

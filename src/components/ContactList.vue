@@ -4,9 +4,9 @@ import ContactBox from "./contactBox.vue";
 
 </script>
 <template>
-  <div class="data">
+  <div class="grid grid-cols-1 gap-5  sm:grid sm:grid-cols-2 sm:gap-11  ">
     <!-- table -->
-    <div>
+    <div class="mb-1">
       <Contact />
     </div>
 
@@ -14,12 +14,10 @@ import ContactBox from "./contactBox.vue";
     <div>
       <ContactBox />
     </div>
+    <h1>hello</h1>
   </div>
 </template>
 
 <style scoped>
-thead {
-  background-color: #eeecec;
-  border-radius: 10px;
-}
+
 </style>
