@@ -37,6 +37,7 @@ const openModal = () => router.push("/contacts/contact");
         class="h-full px-1 flex items-center"
         :class="store.checkAll && 'opacity-50 cursor-not-allowed'"
         @click="openModal"
+        :disabled="store.checkAll"
       >
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-plus" aria-hidden="true"> </i>
