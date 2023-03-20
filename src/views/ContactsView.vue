@@ -34,7 +34,7 @@ const openModal = () => router.push("/contacts/contact");
     >
       <!-- add -->
       <button
-        class="h-full px-1 flex items-center"
+        class="py-2 px-1 flex items-center"
         :class="store.checkAll && 'opacity-50 cursor-not-allowed'"
         @click="openModal"
         :disabled="store.checkAll"
@@ -46,7 +46,7 @@ const openModal = () => router.push("/contacts/contact");
       </button>
       <!-- delete all -->
 
-      <button class="h-full px-1 flex items-center" v-if="store.checkAll">
+      <button class="py-2 px-1 flex items-center" v-if="store.checkAll">
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-trash" aria-hidden="true"></i>
           <span>DELETE ALL</span>
