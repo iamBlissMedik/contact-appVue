@@ -5,7 +5,12 @@ const store = useContactStore();
 
 const showData = (i) => {
   store.contactIndex(i);
-  store.dataBox = true
+  store.dataBox = true;
+  store.checkedContact(i);
+};
+
+const checked = () => {
+  store.contacts.forEach((e) => (e.checked = !store.checkAll));
 };
 </script>
 <template>
@@ -14,7 +19,13 @@ const showData = (i) => {
       <tr>
         <!-- checkbox -->
         <th>
-          <input type="checkbox" name="" id="" />
+          <input
+            type="checkbox"
+            name=""
+            id=""
+            @click="checked"
+            v-model="store.checkAll"
+          />
         </th>
         <!-- FULL NAME -->
         <th class="p-2">FULLNAME</th>
@@ -22,6 +33,7 @@ const showData = (i) => {
         <th class="p-2">Email Address</th>
         <!-- phone number-->
         <th class="p-2">Phone Number</th>
+        <th class="p-2"></th>
       </tr>
     </thead>
     <tbody class="text-left sm:text-">
@@ -31,10 +43,15 @@ const showData = (i) => {
         :key="index"
         @click="showData(index)"
       >
-        <td><input :type="contact && 'checkbox'" name="" id="" /></td>
+        <td>
+          <input :type="contact && 'checkbox'" v-model="contact.checked" />
+        </td>
         <td class="p-2">{{ contact.names }}</td>
         <td class="p-2">{{ contact.email }}</td>
         <td class="p-2">{{ contact.phoneNumber }}</td>
+        <td class="p-2" @click="deleteContact">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -10,6 +10,7 @@ const contact = ref({
   lastName: "",
   phoneNumber: "",
   email: "",
+  checked: false,
 });
 
 const addContact = () => {

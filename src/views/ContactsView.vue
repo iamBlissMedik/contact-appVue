@@ -44,7 +44,7 @@ const openModal = ()=> router.push("/contacts/contact")
       </button>
       <!-- delete all -->
 
-      <button class="h-full px-1 flex items-center">
+      <button class="h-full px-1 flex items-center" v-if="store.checkAll">
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-trash" aria-hidden="true"></i>
           <span>DELETE ALL</span>

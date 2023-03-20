@@ -40,6 +40,7 @@ const { contactResult } = storeToRefs(store);
           <p>{{ contactResult[0].email }}</p>
         </div>
       </div>
+      
     </div>
   </div>
 </template>

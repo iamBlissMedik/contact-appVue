@@ -8,18 +8,21 @@ export const useContactStore = defineStore("contact", () => {
       lastName: "Richard",
       email: "ellamiss@gmail.com",
       phoneNumber: "08654311111",
+      checked: false,
     },
     {
       firstName: "Ellams",
       lastName: "Bliss",
       email: "elllismail.com",
       phoneNumber: "111111111",
+      checked: false,
     },
     {
       firstName: "Akinro",
       lastName: "Destined",
       email: "ellil.com",
       phoneNumber: "0811111",
+      checked: false,
     },
   ]);
   const contactResultIndex = ref(0);
@@ -30,10 +33,18 @@ export const useContactStore = defineStore("contact", () => {
         names: `${e.firstName} ${e.lastName}`,
         phoneNumber: e.phoneNumber,
         email: e.email,
+        checked: e.checked,
       };
     })
   );
 
+  // check just the contact
+  const checkedContact = (i) => {
+    contacts.value[i].checked = !contacts.value[i].checked;
+  };
+
+  // checkbox all
+  const checkAll = ref(false);
   const addContact = (contact) => contacts.value.push(contact);
   const contactIndex = (i) => (contactResultIndex.value = i);
   const contactResult = computed(() =>
@@ -59,5 +70,7 @@ export const useContactStore = defineStore("contact", () => {
     dataBox,
     contactResult,
     contactIndex,
+    checkAll,
+    checkedContact,
   };
 });
