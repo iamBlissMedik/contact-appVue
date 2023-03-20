@@ -1,11 +1,17 @@
 <script setup>
 import ContactLists from "../components/ContactList.vue";
+import Popup from "../components/Popup.vue";
+import { RouterView ,useRouter} from "vue-router";
+
 import { useContactStore } from "../stores/contactList";
+const router = useRouter()
 const store = useContactStore();
+const openModal = ()=> router.push("/contacts/contact")
 
 
 </script>
 <template>
+
   <header class="flex h-[80px] w-full items-center">
     <!-- image -->
 
@@ -30,7 +36,7 @@ const store = useContactStore();
       class="grid gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
     >
       <!-- add -->
-      <button class="h-full px-1 flex items-center">
+      <button class="h-full px-1 flex items-center" @click="openModal">
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-plus" aria-hidden="true"> </i>
           <span>ADD CONTACT</span>
@@ -46,10 +52,17 @@ const store = useContactStore();
       </button>
     </div>
   </div>
+
+ 
   <!-- contact list -->
   <div class="w-full ">
     <ContactLists/>
   </div>
+  <!-- popup -->
+ <div >
+   <RouterView/>
+ </div>
+
 </template>
 
 <style scoped>

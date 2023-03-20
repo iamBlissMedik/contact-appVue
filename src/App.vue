@@ -6,10 +6,12 @@ import { RouterView } from "vue-router";
 
 <template>
   <div class="w-full h-full flex">
-    <SideBar />
+    <div>
+      <SideBar />
+    </div>
     <div class="w-full h-full">
       <HeaderTop />
-      <div class="w-full h-[calc(100vh-50px)] p-[40px]">
+      <div class="w-full h-full p-[40px]">
         <RouterView />
       </div>
     </div>

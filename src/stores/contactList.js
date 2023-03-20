@@ -24,7 +24,6 @@ export const useContactStore = defineStore("contact", () => {
   ]);
   const contactResultIndex = ref(0);
 
-  const checkBox = ref("checkbox");
   const fullName = computed(() =>
     contacts.value.map((e) => {
       return {
@@ -35,18 +34,20 @@ export const useContactStore = defineStore("contact", () => {
     })
   );
 
-  const addContact = (contact) => contacts.push(contact);
+  const addContact = (contact) => contacts.value.push(contact);
   const contactIndex = (i) => (contactResultIndex.value = i);
   const contactResult = computed(() =>
     fullName.value.filter((e, i) => i === contactResultIndex.value)
   );
-  const side = ref(true);
+  const side = ref(false);
+
   const close = () => {
     side.value = false;
   };
   const open = () => {
     side.value = true;
   };
+  const dataBox = ref(false);
 
   return {
     contacts,
@@ -55,7 +56,7 @@ export const useContactStore = defineStore("contact", () => {
     side,
     open,
     close,
-    checkBox,
+    dataBox,
     contactResult,
     contactIndex,
   };

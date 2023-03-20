@@ -1,6 +1,12 @@
-<script setup></script>
+<script setup>
+import Popup from "../components/Popup.vue";
+import { useContactStore } from "../stores/contactList";
+const store = useContactStore();
+</script>
 <template>
-  <div>ahhggdd contact</div>
+  <div class="overflow-hidden bg-black" >
+    <Popup/>
+  </div>
 </template>
 
 <style scoped></style>

@@ -1,14 +1,15 @@
 <script setup>
 import { useContactStore } from "../stores/contactList";
+import { ref } from "vue";
 const store = useContactStore();
+
 const showData = (i) => {
   store.contactIndex(i);
-  
+  store.dataBox = true
 };
 </script>
 <template>
-    
-  <table class="text-xs table-auto w-full sm:text-lg  mt-3">
+  <table class="text-xs table-auto w-full sm:text-lg mt-3">
     <thead class="text-left uppercase">
       <tr>
         <!-- checkbox -->
@@ -25,7 +26,7 @@ const showData = (i) => {
     </thead>
     <tbody class="text-left sm:text-">
       <tr
-      class="cursor-pointer"
+        class="cursor-pointer"
         v-for="(contact, index) in store.fullName"
         :key="index"
         @click="showData(index)"
@@ -39,8 +40,9 @@ const showData = (i) => {
   </table>
 </template>
 
-<style  scoped>
+<style scoped>
 thead {
   background-color: #eeecec;
   border-radius: 10px;
-}</style>
+}
+</style>

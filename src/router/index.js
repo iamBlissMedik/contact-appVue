@@ -13,10 +13,10 @@ const router = createRouter({
     },
     {
       path: "/contacts",
-      name: "contacts",
       component: ContactsView,
       children: [
         {
+          name: "contact",
           path: "contact",
           component: AddContactView,
         },
