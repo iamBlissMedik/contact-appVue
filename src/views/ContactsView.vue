@@ -1,23 +1,20 @@
 <script setup>
 import ContactLists from "../components/ContactList.vue";
 import Popup from "../components/Popup.vue";
-import { RouterView ,useRouter} from "vue-router";
+import { RouterView, useRouter } from "vue-router";
 
 import { useContactStore } from "../stores/contactList";
-const router = useRouter()
+const router = useRouter();
 const store = useContactStore();
-const openModal = ()=> router.push("/contacts/contact")
-
-
+const openModal = () => router.push("/contacts/contact");
 </script>
 <template>
-
   <header class="flex h-[80px] w-full items-center">
     <!-- image -->
 
     <img src="../assets/images/contact.png" alt="" class="h-full" />
     <!-- contact name -->
-    <div class="flex flex-col h-full  ">
+    <div class="flex flex-col h-full">
       <h3 class="text-start mb-2 uppercase font-bold">Contacts</h3>
       <!-- title -->
       <div class="">
@@ -36,7 +33,11 @@ const openModal = ()=> router.push("/contacts/contact")
       class="grid gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
     >
       <!-- add -->
-      <button class="h-full px-1 flex items-center" @click="openModal">
+      <button
+        class="h-full px-1 flex items-center"
+        :class="store.checkAll && 'opacity-50 cursor-not-allowed'"
+        @click="openModal"
+      >
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-plus" aria-hidden="true"> </i>
           <span>ADD CONTACT</span>
@@ -53,16 +54,14 @@ const openModal = ()=> router.push("/contacts/contact")
     </div>
   </div>
 
- 
   <!-- contact list -->
-  <div class="w-full ">
-    <ContactLists/>
+  <div class="w-full">
+    <ContactLists />
   </div>
   <!-- popup -->
- <div >
-   <RouterView/>
- </div>
-
+  <div>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>

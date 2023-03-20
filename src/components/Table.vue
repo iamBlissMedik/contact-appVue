@@ -21,8 +21,7 @@ const checked = () => {
         <th>
           <input
             type="checkbox"
-            name=""
-            id=""
+            class="cursor-pointer"
             @click="checked"
             v-model="store.checkAll"
           />
