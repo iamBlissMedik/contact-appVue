@@ -30,7 +30,7 @@ const openModal = () => router.push("/contacts/contact");
     </div>
     <!-- buttons -->
     <div
-      class="grid gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
+      class="flex gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
     >
       <!-- add -->
       <button

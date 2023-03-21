@@ -6,7 +6,6 @@ const store = useContactStore();
 const showData = (i) => {
   store.contactIndex(i);
   store.dataBox = true;
-  store.checkedContact(i);
 };
 
 const checked = () => {
@@ -40,14 +39,13 @@ const checked = () => {
         class="cursor-pointer"
         v-for="(contact, index) in store.fullName"
         :key="index"
-        @click="showData(index)"
       >
         <td>
           <input :type="contact && 'checkbox'" v-model="contact.checked" />
         </td>
-        <td class="p-2">{{ contact.names }}</td>
-        <td class="p-2">{{ contact.email }}</td>
-        <td class="p-2">{{ contact.phoneNumber }}</td>
+        <td class="p-2" @click="showData(index)">{{ contact.names }}</td>
+        <td class="p-2" @click="showData(index)">{{ contact.email }}</td>
+        <td class="p-2" @click="showData(index)">{{ contact.phoneNumber }}</td>
         <td class="p-2" @click="deleteContact">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </td>
