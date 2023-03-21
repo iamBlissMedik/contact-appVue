@@ -38,15 +38,19 @@ export const useContactStore = defineStore("contact", () => {
     })
   );
 
-  // check just the contact
-  const checkedContact = (i) => {
-    contacts.value[i].checked = !contacts.value[i].checked;
+  // delete contact
+
+  const deleteContact = (index) => {
+    contacts.value = contacts.value.filter((e, i) => i !== index);
   };
 
   // checkbox all
   const checkAll = ref(false);
+  // add contact
   const addContact = (contact) => contacts.value.push(contact);
+  // contact index
   const contactIndex = (i) => (contactResultIndex.value = i);
+  // data box
   const contactResult = computed(() =>
     fullName.value.filter((e, i) => i === contactResultIndex.value)
   );
@@ -71,6 +75,6 @@ export const useContactStore = defineStore("contact", () => {
     contactResult,
     contactIndex,
     checkAll,
-    checkedContact,
+    deleteContact,
   };
 });

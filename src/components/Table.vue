@@ -7,7 +7,9 @@ const showData = (i) => {
   store.contactIndex(i);
   store.dataBox = true;
 };
-
+const deleteContact = (i) => {
+  store.deleteContact(i);
+};
 const checked = () => {
   store.contacts.forEach((e) => (e.checked = !store.checkAll));
 };
@@ -46,7 +48,7 @@ const checked = () => {
         <td class="p-2" @click="showData(index)">{{ contact.names }}</td>
         <td class="p-2" @click="showData(index)">{{ contact.email }}</td>
         <td class="p-2" @click="showData(index)">{{ contact.phoneNumber }}</td>
-        <td class="p-2" @click="deleteContact">
+        <td class="p-2" @click="deleteContact(index)">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </td>
       </tr>
