@@ -91,6 +91,7 @@ const cancelForm = () => router.push("/contacts");
             class="float-right w-full flex justify-end gap-7 items-center py-12"
           >
             <button
+              type="reset"
               class="px-5 py-4 cancel-btn hover:bg-red-700"
               @click="cancelForm"
             >
