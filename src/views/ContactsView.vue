@@ -1,12 +1,15 @@
 <script setup>
 import ContactLists from "../components/ContactList.vue";
-import Popup from "../components/Popup.vue";
+
 import { RouterView, useRouter } from "vue-router";
 
 import { useContactStore } from "../stores/contactList";
 const router = useRouter();
 const store = useContactStore();
-const openModal = () => router.push("/contacts/contact");
+const openModal = () => {
+  store.dataBox = false;
+  router.push("/contacts/contact");
+};
 </script>
 <template>
   <header class="flex h-[80px] w-full items-center">
@@ -26,7 +29,12 @@ const openModal = () => router.push("/contacts/contact");
   <div class="w-full sm:flex items-center">
     <!-- search bar -->
     <div class="my-5">
-      <input type="text" class="w-full sm:w-[600px] mr-2" />
+      
+      <input
+        type="text"
+        class="w-full sm:w-[600px] mr-2"
+        v-model.trim="store.search"
+      />
     </div>
     <!-- buttons -->
     <div
@@ -40,7 +48,7 @@ const openModal = () => router.push("/contacts/contact");
         :disabled="store.checkAll"
       >
         <div class="flex w-full justify-around items-center">
-          <i class="fa fa-plus" aria-hidden="true"> </i>
+          <i class="fa fa-plus mr-2" aria-hidden="true"> </i>
           <span>ADD CONTACT</span>
         </div>
       </button>

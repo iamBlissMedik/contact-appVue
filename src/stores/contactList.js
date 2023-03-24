@@ -28,22 +28,30 @@ export const useContactStore = defineStore("contact", () => {
   const contactResultIndex = ref(0);
 
   const fullName = computed(() =>
-    contacts.value.map((e) => {
-      return {
-        names: `${e.firstName} ${e.lastName}`,
-        phoneNumber: e.phoneNumber,
-        email: e.email,
-        checked: e.checked,
-      };
-    })
+    contacts.value
+      .map((e) => {
+        return {
+          names: `${e.firstName} ${e.lastName}`,
+          phoneNumber: e.phoneNumber,
+          email: e.email,
+          checked: e.checked,
+        };
+      })
+      .filter(
+        (e) =>
+          e.names.toLowerCase().includes(search.value) ||
+          e.email.toLowerCase().includes(search.value) ||
+          e.phoneNumber.toLowerCase().includes(search.value)
+      )
   );
+  // search bar
+  const search = ref("");
 
   // delete contact
 
   const deleteContact = (index) => {
     contacts.value = contacts.value.filter((e, i) => i !== index);
   };
-
   // checkbox all
   const checkAll = ref(false);
   // add contact
@@ -76,5 +84,6 @@ export const useContactStore = defineStore("contact", () => {
     contactIndex,
     checkAll,
     deleteContact,
+    search,
   };
 });

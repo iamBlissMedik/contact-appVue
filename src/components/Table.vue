@@ -9,6 +9,7 @@ const showData = (i) => {
 };
 const deleteContact = (i) => {
   store.deleteContact(i);
+  store.dataBox = false;
 };
 const checked = () => {
   store.contacts.forEach((e) => (e.checked = !store.checkAll));
