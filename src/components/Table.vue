@@ -8,8 +8,10 @@ const showData = (i) => {
   store.dataBox = true;
 };
 const deleteContact = (i) => {
-  store.deleteContact(i);
-  store.dataBox = false;
+  if (store.fullName[i].checked) {
+    store.deleteContact(i);
+    store.dataBox = false;
+  }
 };
 const checked = () => {
   store.contacts.forEach((e) => (e.checked = !store.checkAll));
@@ -41,7 +43,7 @@ const checked = () => {
       <tr
         class="cursor-pointer"
         v-for="(contact, index) in store.fullName"
-        :key="index"
+        :key="contact.names"
       >
         <td>
           <input :type="contact && 'checkbox'" v-model="contact.checked" />

@@ -5,19 +5,19 @@ import { useContactStore } from "../stores/contactList";
 const store = useContactStore();
 const router = useRouter();
 const form = ref(null);
+
 const contact = ref({
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
-  email: "",
+  firstName: store.contacts[store.contactResultIndex].firstName,
+  lastName: store.contacts[store.contactResultIndex].lastName,
+  phoneNumber: store.contacts[store.contactResultIndex].phoneNumber,
+  email: store.contacts[store.contactResultIndex].email,
   checked: false,
 });
 
-const addContact = () => {
-  store.addContact(contact.value);
-  form.value.reset();
-  router.push("/contacts");
+const editContact = () => {
+  store.editContact(contact.value);
 
+  router.push("/contacts");
 };
 const cancelForm = () => router.push("/contacts");
 </script>
@@ -29,9 +29,9 @@ const cancelForm = () => router.push("/contacts");
       <div
         class="pt-8 text-xl font-extrabold border-b px-16 text-center flex justify-center items-center"
       >
-        <h1>ADD CONTACT</h1>
+        <h1>Edit CONTACT</h1>
       </div>
-      <form ref="form" @submit.prevent="addContact">
+      <form ref="form" @submit.prevent="editContact">
         <!-- form inputs -->
         <div
           class="grid grid-cols-1 gap-3 sm:grid sm:grid-cols-2 sm:gap-10 w-full py-12 px-10"
@@ -96,7 +96,7 @@ const cancelForm = () => router.push("/contacts");
               Cancel
             </button>
             <button class="px-5 py-4 submit-btn hover:bg-green-600">
-              Add Contact
+              Save
             </button>
           </div>
         </div>
