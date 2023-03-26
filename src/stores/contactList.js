@@ -3,27 +3,16 @@ import { defineStore } from "pinia";
 
 export const useContactStore = defineStore("contact", () => {
   const contacts = ref([
-    {
-      firstName: "Oluseye",
-      lastName: "Richard",
-      email: "ellamiss@gmail.com",
-      phoneNumber: "08654311111",
-      checked: false,
-    },
+
     {
       firstName: "Ellams",
       lastName: "Bliss",
-      email: "elllismail.com",
-      phoneNumber: "111111111",
+      email: "ellamsbliss@gmail.com",
+      phoneNumber: "08163985830",
       checked: false,
     },
-    {
-      firstName: "Akinro",
-      lastName: "Destined",
-      email: "ellil.com",
-      phoneNumber: "0811111",
-      checked: false,
-    },
+
+
   ]);
 
   const contactResultIndex = ref(0);
@@ -52,8 +41,10 @@ export const useContactStore = defineStore("contact", () => {
 
   const deleteContact = (index) => {
     contacts.value = contacts.value.filter((e, i) => i !== index);
-    
   };
+
+  // delete all
+  const deleteAll = () => contacts.value.splice(0, contacts.value.length);
 
   // checkboss
   const checkbox = ref(false);
@@ -95,6 +86,6 @@ export const useContactStore = defineStore("contact", () => {
     checkAll,
     deleteContact,
     search,
-
+    deleteAll,
   };
 });

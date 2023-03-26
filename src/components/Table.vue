@@ -19,7 +19,7 @@ const checked = () => {
 </script>
 <template>
   <table class="text-xs table-auto w-full sm:text-lg mt-3">
-    <thead class="text-left uppercase">
+    <thead class="text-left uppercase ">
       <tr>
         <!-- checkbox -->
         <th>

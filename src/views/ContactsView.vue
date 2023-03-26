@@ -10,6 +10,10 @@ const openModal = () => {
   store.dataBox = false;
   router.push("/contacts/contact");
 };
+const deleteAll = () => {
+  store.deleteAll();
+  store.checkAll = false;
+};
 </script>
 <template>
   <header class="flex h-[80px] w-full items-center">
@@ -29,7 +33,6 @@ const openModal = () => {
   <div class="w-full sm:flex items-center">
     <!-- search bar -->
     <div class="my-5">
-      
       <input
         type="text"
         class="w-full sm:w-[600px] mr-2"
@@ -54,7 +57,11 @@ const openModal = () => {
       </button>
       <!-- delete all -->
 
-      <button class="py-2 px-1 flex items-center" v-if="store.checkAll">
+      <button
+        class="py-2 px-1 flex items-center"
+        v-if="store.checkAll"
+        @click="deleteAll"
+      >
         <div class="flex w-full justify-around items-center">
           <i class="fa fa-trash" aria-hidden="true"></i>
           <span>DELETE ALL</span>
