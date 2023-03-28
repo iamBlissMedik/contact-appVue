@@ -1,11 +1,10 @@
 <script setup>
-import Popup from "../components/Popup.vue";
-import { useContactStore } from "../stores/contactList";
-const store = useContactStore();
+import AddContact from "../components/AddContact.vue";
+
 </script>
 <template>
   <div>
-    <Popup />
+    <AddContact />
   </div>
 </template>
 

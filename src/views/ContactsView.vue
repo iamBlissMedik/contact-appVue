@@ -1,9 +1,9 @@
 <script setup>
-import ContactLists from "../components/ContactList.vue";
-
+import ContactsContent from "../components/ContactsContent.vue";
+import TitleVue from "../components/Title.vue";
 import { RouterView, useRouter } from "vue-router";
-
 import { useContactStore } from "../stores/contactList";
+import Freestyle from "../components/Button.vue";
 const router = useRouter();
 const store = useContactStore();
 const openModal = () => {
@@ -14,20 +14,12 @@ const deleteAll = () => {
   store.deleteAll();
   store.checkAll = false;
 };
+
+const doth = () => console.log("hi");
 </script>
 <template>
-  <header class="flex h-[80px] w-full items-center">
-    <!-- image -->
-
-    <img src="../assets/images/contact.png" alt="" class="h-full" />
-    <!-- contact name -->
-    <div class="flex flex-col h-full">
-      <h3 class="text-start mb-2 uppercase font-bold">Contacts</h3>
-      <!-- title -->
-      <div class="">
-        <h4>Welcome To Lorem Phonebook</h4>
-      </div>
-    </div>
+  <header>
+    <TitleVue />
   </header>
   <!-- search bar + 2 buttons -->
   <div class="w-full sm:flex items-center">
@@ -43,6 +35,7 @@ const deleteAll = () => {
     <div
       class="flex gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
     >
+
       <!-- add -->
       <button
         class="py-2 px-1 flex items-center"
@@ -56,7 +49,6 @@ const deleteAll = () => {
         </div>
       </button>
       <!-- delete all -->
-
       <button
         class="py-2 px-1 flex items-center"
         v-if="store.checkAll"
@@ -69,17 +61,15 @@ const deleteAll = () => {
       </button>
     </div>
   </div>
-
   <!-- contact list -->
   <div class="w-full">
-    <ContactLists />
+    <ContactsContent />
   </div>
   <!-- popup -->
   <div>
     <RouterView />
   </div>
 </template>
-
 <style scoped>
 button {
   background: linear-gradient(
@@ -93,7 +83,6 @@ button {
   );
   border-radius: 10px;
   box-shadow: -1px 21px 34px -14px rgba(0, 0, 255, 0.63);
-
   width: 140px;
   font-size: 15px;
   color: white !important;

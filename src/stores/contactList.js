@@ -1,9 +1,7 @@
 import { computed, ref } from "vue";
 import { defineStore } from "pinia";
-
 export const useContactStore = defineStore("contact", () => {
   const contacts = ref([
-
     {
       firstName: "Ellams",
       lastName: "Bliss",
@@ -11,12 +9,8 @@ export const useContactStore = defineStore("contact", () => {
       phoneNumber: "08163985830",
       checked: false,
     },
-
-
   ]);
-
   const contactResultIndex = ref(0);
-
   const fullName = computed(() =>
     contacts.value
       .map((e) => {
@@ -36,16 +30,12 @@ export const useContactStore = defineStore("contact", () => {
   );
   // search bar
   const search = ref("");
-
   // delete contact
-
   const deleteContact = (index) => {
     contacts.value = contacts.value.filter((e, i) => i !== index);
   };
-
   // delete all
   const deleteAll = () => contacts.value.splice(0, contacts.value.length);
-
   // checkboss
   const checkbox = ref(false);
   // checkbox all
@@ -62,7 +52,6 @@ export const useContactStore = defineStore("contact", () => {
     fullName.value.filter((e, i) => i === contactResultIndex.value)
   );
   const side = ref(false);
-
   const close = () => {
     side.value = false;
   };
@@ -70,7 +59,6 @@ export const useContactStore = defineStore("contact", () => {
     side.value = true;
   };
   const dataBox = ref(false);
-
   return {
     contacts,
     addContact,

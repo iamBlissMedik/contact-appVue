@@ -2,6 +2,9 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useContactStore } from "../stores/contactList";
+import ButtonView from "./Buttons.vue";
+import ButtonT from "./Button.vue";
+
 const store = useContactStore();
 const router = useRouter();
 const form = ref(null);
@@ -13,13 +16,24 @@ const contact = ref({
   checked: false,
 });
 
+const buttons = ref({
+  submit: {
+    type: "submit",
+    buttonName: "add contact",
+    class : "bg-blue-700 hover:bg-green-600 rounded-xl"
+  },
+  cancel: {
+    type: "resett",
+    buttonName: "cancel",
+     class : "bg-gray-400 w-fit hover:bg-red-700"
+  },
+});
+const cancelForm = () => router.push("/contacts");
 const addContact = () => {
   store.addContact(contact.value);
   form.value.reset();
   router.push("/contacts");
-
 };
-const cancelForm = () => router.push("/contacts");
 </script>
 <template>
   <div
@@ -84,21 +98,25 @@ const cancelForm = () => router.push("/contacts");
           </div>
         </div>
         <!-- button -->
-        <div class="sm:w-full px-10 border-b items-center">
-          <div
-            class="float-right w-full flex justify-end gap-7 items-center py-12"
-          >
-            <button
-              type="reset"
-              class="px-5 py-4 cancel-btn hover:bg-red-700"
-              @click="cancelForm"
-            >
-              Cancel
-            </button>
-            <button class="px-5 py-4 submit-btn hover:bg-green-600">
-              Add Contact
-            </button>
-          </div>
+        <div
+          class="w-full flex justify-end gap-7 py-12 sm:w-full px-10 border-t items-center"
+        >
+        <!-- cancel add contact -->
+          <ButtonT
+            :buttonName="buttons.cancel.buttonName"
+            :type="buttons.cancel.type"
+            :class="buttons.cancel.class"
+            @click="cancelForm"
+          />
+
+          <!-- add contact -->
+            <ButtonT
+              :buttonName="buttons.submit.buttonName"
+              :type="buttons.submit.type"
+              :class="buttons.submit.class"
+
+            />
+
         </div>
       </form>
     </div>
@@ -125,22 +143,5 @@ input::-webkit-inner-spin-button {
 label {
   font-size: larger;
   font-weight: 400;
-}
-.submit-btn {
-  background-color: blue;
-  border-radius: 10px;
-  color: white;
-  box-shadow: -1px 21px 34px -14px rgba(0, 0, 255, 0.63);
-  font-weight: bold;
-  text-transform: uppercase;
-}
-.cancel-btn {
-  background-color: grey;
-  border-radius: 10px;
-  color: white;
-  box-shadow: -1px 21px 34px -14px rgba(0, 0, 255, 0.63);
-  border: none;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 </style>
