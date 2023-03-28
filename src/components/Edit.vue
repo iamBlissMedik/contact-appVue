@@ -2,7 +2,10 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useContactStore } from "../stores/contactList";
+import { useButtonsStore } from "../stores/Buttons";
+import ButtonVue from "./Button.vue";
 const store = useContactStore();
+const buttonStore = useButtonsStore();
 const router = useRouter();
 const form = ref(null);
 
@@ -88,16 +91,20 @@ const cancelForm = () => router.push("/contacts");
           <div
             class="float-right w-full flex justify-end gap-7 items-center py-12"
           >
-            <button
-              type="reset"
-              class="px-5 py-4 cancel-btn hover:bg-red-700"
-              @click="cancelForm"
-            >
-              Cancel
-            </button>
-            <button class="px-5 py-4 submit-btn hover:bg-green-600">
-              Save
-            </button>
+
+              <!-- cancel add contact -->
+          <ButtonVue
+            :buttonName="buttonStore.buttons.cancel.buttonName"
+            :type="buttonStore.buttons.cancel.type"
+            :class="buttonStore.buttons.cancel.class"
+            @click="cancelForm"
+          />
+          <!-- save -->
+          <ButtonVue
+            :buttonName="buttonStore.buttons.edit.buttonName"
+            :type="buttonStore.buttons.edit.type"
+            :class="buttonStore.buttons.edit.class"
+          />
           </div>
         </div>
       </form>

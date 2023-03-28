@@ -2,10 +2,12 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useContactStore } from "../stores/contactList";
+import { useButtonsStore } from "../stores/Buttons";
 
-import ButtonT from "./Button.vue";
+import ButtonVue from "./Button.vue";
 
 const store = useContactStore();
+const buttonStore = useButtonsStore();
 const router = useRouter();
 const form = ref(null);
 const contact = ref({
@@ -16,18 +18,6 @@ const contact = ref({
   checked: false,
 });
 
-const buttons = ref({
-  submit: {
-    type: "submit",
-    buttonName: "add contact",
-    class: "bg-blue-700 hover:bg-green-600 rounded-xl",
-  },
-  cancel: {
-    type: "reset",
-    buttonName: "cancel",
-    class: "bg-gray-400 w-fit hover:bg-red-700",
-  },
-});
 const cancelForm = () => router.push("/contacts");
 const addContact = () => {
   store.addContact(contact.value);
@@ -102,17 +92,17 @@ const addContact = () => {
           class="w-full flex justify-end gap-7 py-12 sm:w-full px-10 border-t items-center"
         >
           <!-- cancel add contact -->
-          <ButtonT
-            :buttonName="buttons.cancel.buttonName"
-            :type="buttons.cancel.type"
-            :class="buttons.cancel.class"
+          <ButtonVue
+            :buttonName="buttonStore.buttons.cancel.buttonName"
+            :type="buttonStore.buttons.cancel.type"
+            :class="buttonStore.buttons.cancel.class"
             @click="cancelForm"
           />
           <!-- add contact -->
-          <ButtonT
-            :buttonName="buttons.submit.buttonName"
-            :type="buttons.submit.type"
-            :class="buttons.submit.class"
+          <ButtonVue
+            :buttonName="buttonStore.buttons.submit.buttonName"
+            :type="buttonStore.buttons.submit.type"
+            :class="buttonStore.buttons.submit.class"
           />
         </div>
       </form>
