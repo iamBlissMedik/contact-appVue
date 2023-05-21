@@ -1,99 +1,30 @@
 <script setup>
 import ContactsContent from "../components/ContactsContent.vue";
 import TitleVue from "../components/Title.vue";
-import { RouterView, useRouter } from "vue-router";
-import { useContactStore } from "../stores/contactList";
-import Freestyle from "../components/Button.vue";
-const router = useRouter();
-const store = useContactStore();
-const openModal = () => {
-  store.dataBox = false;
-  router.push("/contacts/contact");
-};
-const deleteAll = () => {
-  store.deleteAll();
-  store.checkAll = false;
-};
-
-const doth = () => console.log("hi");
+import SearchBarVue from "../components/SearchBar.vue";
+import ButtonsVue from "../components/Buttons.vue";
+import { RouterView } from "vue-router";
 </script>
 <template>
-  <header>
+  <!-- contact app contents -->
+  <div class="grid gap-4">
     <TitleVue />
-  </header>
-  <!-- search bar + 2 buttons -->
-  <div class="w-full sm:flex items-center">
-    <!-- search bar -->
-    <div class="my-5">
-      <input
-        type="text"
-        class="w-full sm:w-[600px] mr-2"
-        v-model.trim="store.search"
-      />
-    </div>
-    <!-- buttons -->
-    <div
-      class="flex gap-2 h-[80px] sm:w-[300px] sm:flex justify-between sm:h-[50px] items-center"
-    >
 
-      <!-- add -->
-      <button
-        class="py-2 px-1 flex items-center"
-        :class="store.checkAll && 'opacity-50 cursor-not-allowed'"
-        @click="openModal"
-        :disabled="store.checkAll"
-      >
-        <div class="flex w-full justify-around items-center">
-          <i class="fa fa-plus mr-2" aria-hidden="true"> </i>
-          <span>ADD CONTACT</span>
-        </div>
-      </button>
-      <!-- delete all -->
-      <button
-        class="py-2 px-1 flex items-center"
-        v-if="store.checkAll"
-        @click="deleteAll"
-      >
-        <div class="flex w-full justify-around items-center">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <span>DELETE ALL</span>
-        </div>
-      </button>
+    <!-- search bar + 2 buttons -->
+    <div class="w-full grid gap-4 sm:flex items-center">
+      <!-- search bar -->
+      <SearchBarVue />
+
+      <!-- buttons -->
+      <ButtonsVue />
     </div>
-  </div>
-  <!-- contact list -->
-  <div class="w-full">
-    <ContactsContent />
-  </div>
-  <!-- popup -->
-  <div>
-    <RouterView />
+    <!-- contact list -->
+    <div class="w-full">
+      <ContactsContent />
+    </div>
+    <!-- ADD CONTACT popup -->
+    <div>
+      <RouterView />
+    </div>
   </div>
 </template>
-<style scoped>
-button {
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(98, 94, 125, 1) 0%,
-    rgba(6, 87, 173, 1) 11%,
-    rgba(10, 81, 171, 1) 25%,
-    rgba(17, 70, 168, 1) 61%,
-    rgba(30, 49, 162, 1) 93%
-  );
-  border-radius: 10px;
-  box-shadow: -1px 21px 34px -14px rgba(0, 0, 255, 0.63);
-  width: 140px;
-  font-size: 15px;
-  color: white !important;
-  font-weight: bold;
-}
-input {
-  height: 50px;
-  border-radius: 10px;
-  outline: none;
-  border: 1px solid #eeecec;
-  background-color: #eeecec;
-  padding: 0 10px;
-}
-</style>

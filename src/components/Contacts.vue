@@ -1,6 +1,6 @@
 <script setup>
 import { useContactStore } from "../stores/contactList";
-import { ref } from "vue";
+
 const store = useContactStore();
 
 const showData = (i) => {
@@ -18,8 +18,8 @@ const checked = () => {
 };
 </script>
 <template>
-  <table class="text-xs table-auto w-full sm:text-lg mt-3">
-    <thead class="text-left uppercase ">
+  <table class="text-xs sm:text-lg w-full">
+    <thead class="text-left sm:text-lg uppercase">
       <tr>
         <!-- checkbox -->
         <th>
@@ -63,5 +63,6 @@ const checked = () => {
 thead {
   background-color: #eeecec;
   border-radius: 10px;
+
 }
 </style>

@@ -30,12 +30,12 @@ const store = useContactStore();
         </RouterLink>
       </div>
       <div>
-        <RouterLink to="/">
+        <RouterLink to="/messages">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
         </RouterLink>
       </div>
       <div>
-        <RouterLink to="/">
+        <RouterLink to="/settings">
           <i class="fa fa-cogs" aria-hidden="true"></i>
         </RouterLink>
       </div>

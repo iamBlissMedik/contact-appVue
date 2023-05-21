@@ -8,4 +8,4 @@ import AddContact from "../components/AddContact.vue";
   </div>
 </template>
 
-<style scoped></style>
+

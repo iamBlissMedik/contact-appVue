@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ContactsView from "../views/ContactsView.vue";
+import MessagesView from "../views/MessagesView.vue";
+import SettingsView from "../views/SettingsView.vue";
 import AddContactView from "../views/AddContactView.vue";
 import EditContactView from "../views/EditContactView.vue";
 const router = createRouter({
@@ -26,6 +28,16 @@ const router = createRouter({
           component: EditContactView,
         },
       ],
+    },
+    {
+      path: "/messages",
+      name: "messages",
+      component: MessagesView,
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: SettingsView,
     },
   ],
 });
