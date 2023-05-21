@@ -27,6 +27,16 @@ export const useContactStore = defineStore("contact", () => {
           e.email.toLowerCase().includes(search.value) ||
           e.phoneNumber.toLowerCase().includes(search.value)
       )
+      .sort((a, b) => {
+        let nameA = a.names.toLowerCase();
+        let nameB = b.names.toLowerCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+      })
   );
   // search bar
   const search = ref("");
