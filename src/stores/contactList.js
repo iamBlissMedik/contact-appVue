@@ -1,9 +1,11 @@
 import { computed, ref } from "vue";
 import { defineStore } from "pinia";
+import { useFirstLetter } from "../composables/useFirstLetter.js";
+const { capitalizeFirstLetter } = useFirstLetter();
 export const useContactStore = defineStore("contact", () => {
   const contacts = ref([
     {
-      firstName: "Ellams",
+      firstName: "ellams",
       lastName: "Bliss",
       email: "ellamsbliss@gmail.com",
       phoneNumber: "08163985830",
@@ -14,10 +16,13 @@ export const useContactStore = defineStore("contact", () => {
   const fullName = computed(() =>
     contacts.value
       .map((e) => {
+        let firstNameFormatted = capitalizeFirstLetter(e.firstName);
+        let lastNameFormatted = capitalizeFirstLetter(e.lastName);
+        let emailFormatted = e.email.toLowerCase();
         return {
-          names: `${e.firstName} ${e.lastName}`,
+          names: `${firstNameFormatted} ${lastNameFormatted}`,
           phoneNumber: e.phoneNumber,
-          email: e.email,
+          email: emailFormatted,
           checked: e.checked,
         };
       })
